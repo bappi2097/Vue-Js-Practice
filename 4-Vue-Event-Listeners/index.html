@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="root">
+      <ul>
+        <li v-for="name in names" v-text="name"></li>
+      </ul>
+      <input type="text" name="" id="input" v-model="new_name" />
+      <button @click="addName">Insert</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: "#root",
+        data: {
+          new_name: "",
+          names: ["joe", "jane", "marry", "jack"],
+        },
+
+        methods: {
+          addName() {
+            this.names.push(this.new_name);
+            this.new_name = "";
+          },
+        },
+
+        // mounted() {
+        //   document.querySelector("#button").addEventListener("click", () => {
+        //     let name = document.querySelector("#input");
+        //     app.names.push(name.value);
+        //     name.value = "";
+        //   });
+        // },
+      });
+    </script>
+  </body>
+</html>

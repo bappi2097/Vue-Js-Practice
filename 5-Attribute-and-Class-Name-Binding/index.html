@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5-Attribute-and-Class-Name-Binding</title>
+    <style>
+      .is-loaded {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <button
+        :title="title"
+        :class="{'is-loaded': isLoaded}"
+        :disabled="isDisabled"
+        @click="toggleClass"
+      >
+        Click Me
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#root",
+        data: {
+          title: "i will see when hover me",
+          isLoaded: false,
+          isDisabled: false,
+        },
+        methods: {
+          toggleClass() {
+            this.isLoaded = true;
+            this.isDisabled = true;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

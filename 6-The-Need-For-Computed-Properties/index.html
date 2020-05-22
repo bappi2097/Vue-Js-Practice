@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <h1>{{reverseMessage}}</h1>
+      <h2>All Tasks</h2>
+      <ul>
+        <li v-for="task in tasks" v-text="task.description"></li>
+      </ul>
+      <h2>Completed Tasks</h2>
+      <ul>
+        <li v-for="task in completedTasks" v-text="task.description"></li>
+      </ul>
+      <h2>Incompleted Task</h2>
+      <ul>
+        <li v-for="task in incompletedTasks" v-text="task.description"></li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#root",
+        data: {
+          message: "Hellow World",
+          tasks: [
+            { description: "Got to hell", completed: true },
+            { description: "this is two", completed: false },
+            { description: "hello there", completed: true },
+            { description: "my name is bappi", completed: true },
+            { description: "say my name", completed: false },
+            { description: "hi there", completed: true },
+            { description: "hello alien", completed: true },
+          ],
+        },
+        methods: {},
+        computed: {
+          reverseMessage() {
+            return this.message.split("").reverse().join("");
+          },
+          completedTasks() {
+            return this.tasks.filter((tasks) => tasks.completed);
+          },
+          incompletedTasks() {
+            return this.tasks.filter((tasks) => !tasks.completed);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
