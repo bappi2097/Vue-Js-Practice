@@ -16,17 +16,8 @@
   </head>
   <body>
     <div id="root" class="container">
-      <tabs>
-        <tab name="About Us" :selected="true">
-          <h1>Here is the content for about us tab.</h1>
-        </tab>
-        <tab name="About Our Culture">
-          <h1>Here is the content for about our culture tab.</h1>
-        </tab>
-        <tab name="About Vision">
-          <h1>Here is the content for about our vision tab.</h1>
-        </tab>
-      </tabs>
+      <cupon @applied="onCuponApplied"></cupon>
+      <h1 v-show="isApplied">Cupon is Applied</h1>
     </div>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <script src="main.js"></script>
