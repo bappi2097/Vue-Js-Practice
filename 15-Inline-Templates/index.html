@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15-Inline-Templates</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css"
+    />
+    <style>
+      body {
+        padding-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="container">
+      <progress-view inline-template>
+        <div>
+          <h1>The Progress through This Course is {{completionRate}}%</h1>
+          <p>
+            <button @click="completionRate+=10">Update Completion Rate</button>
+          </p>
+        </div>
+      </progress-view>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
