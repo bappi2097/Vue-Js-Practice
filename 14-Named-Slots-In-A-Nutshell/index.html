@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13-Component-Communication-Example-2-Event-Dispatcher</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css"
+    />
+    <style>
+      body {
+        padding-top: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root" class="container">
+      <modal>
+        <template slot="header">Bappi saha</template>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+        quisquam excepturi doloremque deserunt mollitia, in est fuga modi,
+        consequuntur labore quam, id ratione nostrum laudantium dicta quia
+        assumenda ab incidunt?
+        <template slot="footer">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </template>
+      </modal>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
