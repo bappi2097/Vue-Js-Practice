@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+ROute::get('skills', function () {
+    return ['Laravel', 'Vue', 'PHP', 'JavaScript', 'Tooling'];
+});
