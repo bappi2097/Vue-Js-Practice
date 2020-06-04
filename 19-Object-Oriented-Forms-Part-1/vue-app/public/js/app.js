@@ -3,7 +3,6 @@ class Errors {
         this.errors = {};
     }
     get(field) {
-        // console.log(this.errors[name][0]);
         if (this.errors[field]) {
             return this.errors[field][0];
         }
