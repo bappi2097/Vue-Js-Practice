@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('projects', 'ProjectController');
+
 Route::get('/', function () {
     return view('welcome');
 });
