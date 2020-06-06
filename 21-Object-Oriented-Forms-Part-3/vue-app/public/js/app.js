@@ -7,9 +7,11 @@ class Form {
         this.errors = new Errors();
     }
     data() {
-        let data = Object.assign({}, this);
-        delete data.originalData;
-        delete data.errors;
+        let data = {};
+        for (let property in this.originalData) {
+            data[property] = this[property];
+        }
+        console.log(this.originalData);
         return data;
     }
     submit(requestType, url) {
@@ -38,6 +40,12 @@ class Form {
             delete this[field];
         }
         this.errors.clear();
+    }
+    post(url) {
+        return this.submit("post", url);
+    }
+    delete(url) {
+        return this.submit("delete", url);
     }
 }
 class Errors {
