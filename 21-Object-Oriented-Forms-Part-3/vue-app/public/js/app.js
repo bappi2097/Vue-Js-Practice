@@ -13,23 +13,31 @@ class Form {
         return data;
     }
     submit(requestType, url) {
-        axios[requestType](url, this.data())
-            .then(this.onSuccess.bind(this))
-            .catch(this.onFail.bind(this));
+        return new Promise((resolve, reject) => {
+            axios[requestType](url, this.data())
+                .then((response) => {
+                    this.onSuccess(response.data);
+                    resolve(response.data);
+                })
+                .catch((error) => {
+                    this.onFail(error.response.data.errors);
+                    reject(error.response.data.errors);
+                });
+        });
     }
     onSuccess(response) {
-        alert(response.data.message);
+        alert(response.message);
         this.reset();
-        this.errors.clear();
         root.updateProjectName();
     }
     onFail(error) {
-        this.errors.record(error.response.data.errors);
+        this.errors.record(error);
     }
     reset() {
         for (let field in this.originalData) {
             delete this[field];
         }
+        this.errors.clear();
     }
 }
 class Errors {
@@ -66,7 +74,10 @@ var root = new Vue({
     },
     methods: {
         onSubmit() {
-            this.form.submit("post", "/projects");
+            this.form
+                .submit("post", "/projects")
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error));
         },
         updateProjectName() {
             axios
