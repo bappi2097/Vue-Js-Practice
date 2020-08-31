@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/bulma.min.css" />
+    <style>
+      html {
+        background: #f1f1f1;
+      }
+      body {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="root">
+      <cuppon @applied="onCupponApplied"></cuppon>
+      <h1>Cuppon Applied Successfully</h1>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
