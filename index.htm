@@ -17,7 +17,7 @@
   <body>
     <div class="container" id="root">
       <cuppon @applied="onCupponApplied"></cuppon>
-      <h1>Cuppon Applied Successfully</h1>
+      <h1 v-show="isApplied">Cuppon Applied Successfully</h1>
     </div>
     <script src="js/vue.js"></script>
     <script src="js/app.js"></script>
