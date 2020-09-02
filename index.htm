@@ -16,8 +16,17 @@
   </head>
   <body>
     <div class="container" id="root">
-      <cuppon @applied="onCupponApplied"></cuppon>
-      <h1 v-show="isApplied">Cuppon Applied Successfully</h1>
+      <tabs>
+        <tab name="About Us" :selected="true">
+          <h1>Here is content for about us tabs.</h1>
+        </tab>
+        <tab name="About Our culture">
+          <h1>Here is content for about our culture tabs.</h1>
+        </tab>
+        <tab name="About Our Visions">
+          <h1>Here is content for about our visions tabs.</h1>
+        </tab>
+      </tabs>
     </div>
     <script src="js/vue.js"></script>
     <script src="js/app.js"></script>
