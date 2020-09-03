@@ -1,0 +1,24 @@
+{
+  "name": "Vue",
+  "version": "1.0.0",
+  "description": "I am trying to learn Vue js. So this is just practice code's repo.\r ## Course Details:\r #### Course Name: Learn Vue 2: Step By Step\r #####  Course Teacher: *Jeffrey Way* \r ##### Course URL: [vuecasts.com](https://laracasts.com/series/learn-vue-2-step-by-step)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bappi2097/Vue-Js-Practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bappi2097/Vue-Js-Practice/issues"
+  },
+  "homepage": "https://github.com/bappi2097/Vue-Js-Practice#readme",
+  "dependencies": {}
+}
