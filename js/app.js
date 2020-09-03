@@ -1,31 +1,41 @@
-window.Event = new (class {
-  constructor() {
-    this.vue = new Vue();
-  }
-  fire(event, data = null) {
-    this.vue.$emit(event, data);
-  }
-  listen(event, callback) {
-    this.vue.$on(event, callback);
-  }
-})();
-
-Vue.component("cuppon", {
+Vue.component("modal", {
   template: `
-  <input type="text" @change="onCupponApplied">
+    <div class="modal" :class="{'is-active' : isActive}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">
+          <slot name="header"></slot>
+          </p>
+          <button class="delete" aria-label="close" @click="isActive=false"></button>
+        </header>
+        <section class="modal-card-body">
+          <slot>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, impedit
+          asperiores! Corporis illum qui odit ducimus modi et, saepe doloribus cumque
+          adipisci molestiae exercitationem dicta ut debitis quis laborum impedit!
+          </slot>
+        </section>
+        <footer class="modal-card-foot">
+        <slot name="footer">
+        <button class="button is-success">Okay</button>
+        </slot>
+        </footer>
+      </div>
+    </div>
   `,
-  methods: {
-    onCupponApplied() {
-      Event.fire("applied");
-    },
+  props: {
+    active: { default: false },
+  },
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  created() {
+    this.isActive = this.active;
   },
 });
 var root = new Vue({
   el: "#root",
-  data: {
-    cupponApplied: false,
-  },
-  created() {
-    Event.listen("applied", () => alert("bappi"));
-  },
 });

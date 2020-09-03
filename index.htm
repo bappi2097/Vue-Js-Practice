@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue</title>
+    <script src="js/vue.js"></script>
     <link rel="stylesheet" href="css/bulma.min.css" />
     <style>
       html {
@@ -16,10 +17,15 @@
   </head>
   <body>
     <div class="container" id="root">
-      <cuppon @applied="onCupponApplied"></cuppon>
-      <h1 v-show="cupponApplied">Cuppon successfully Applied</h1>
+      <modal :active="true">
+        <template slot="header">Lorem, ipsum dolor.</template>
+        Bappi saha is a genius
+        <template slot="footer">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </template>
+      </modal>
     </div>
-    <script src="js/vue.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
