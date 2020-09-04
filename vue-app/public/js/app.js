@@ -7,7 +7,7 @@ class Errors {
         return Object.keys(this.errors).length > 0;
     }
 
-    clear(field) {
+    clear(field = null) {
         if (field) {
             delete this.errors[field];
             return;
@@ -41,9 +41,10 @@ class Form {
 
     data() {
         //  data {name:'bappi', description:'lorem psum amet'}
-        let data = Object.assign({}, this);
-        delete data.originalData;
-        delete data.errors;
+        let data = {};
+        for (let field in this.originalData) {
+            data[field] = this[field];
+        }
         return data;
     }
 
@@ -53,16 +54,17 @@ class Form {
 
     onFail(error) {
         //
-        this.errors.record(error.response.data.errors);
+        this.errors.record(error);
     }
 
-    onSuccess(response) {
+    onSuccess(message) {
         //
-        alert(response.data.message);
+        alert(message);
+        this.reset();
     }
 
     post(url) {
-        this.submit("post", url);
+        return this.submit("post", url);
     }
 
     reset() {
@@ -70,13 +72,22 @@ class Form {
         for (let field in this.originalData) {
             this[field] = "";
         }
+        this.errors.clear();
     }
 
     submit(requestType, url) {
         //  axios
-        axios[requestType](url, this.data())
-            .then(this.onSuccess.bind(this))
-            .catch(this.onFail.bind(this));
+        return new Promise((resolve, reject) => {
+            axios[requestType](url, this.data())
+                .then( (response) => {
+                    this.onSuccess(response.data.message);
+                    resolve(response.data);
+                })
+                .catch((error) => {
+                    this.onFail(error.response.data.errors);
+                    reject(error.response.data.errors);
+                });
+        });
     }
 }
 
@@ -91,9 +102,8 @@ var root = new Vue({
     },
     methods: {
         onSubmit() {
-            this.form.post("/create");
+            this.form.post("/create").then((data)=>console.log(data)).catch((error)=>console.log(error));
             this.loadData();
-            this.form.reset();
         },
         loadData() {
             axios
