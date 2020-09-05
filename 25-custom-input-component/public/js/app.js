@@ -1,19 +1,26 @@
-let store = {
-    user: {
-        name: "john doe"
-    }
-};
-new Vue({
-    el: "#one",
-    data: {
-        foo: "bar",
-        shared: store
+Vue.component("cuppon", {
+    props: ["code"],
+    template: `
+    <input :value="code" @input="updateCode($event.target.value)" ref="input">
+    `,
+    data() {
+        return {
+            invalids: ["bappi", "saha"]
+        };
+    },
+    methods: {
+        updateCode(code) {
+            if (this.invalids.includes(code)) {
+                alert("bappi");
+                this.$refs.input.value = code = "";
+            }
+            this.$emit("input", code);
+        }
     }
 });
-new Vue({
-    el: "#two",
+var root = new Vue({
+    el: "#root",
     data: {
-        foo: "other",
-        shared: store
+        cuppon: "FREEBIE"
     }
 });

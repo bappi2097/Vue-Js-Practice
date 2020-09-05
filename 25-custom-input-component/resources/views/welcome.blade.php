@@ -17,11 +17,10 @@
 </head>
 
 <body>
-    <div id="one">
-        <h1>@{{shared.user.name}}</h1>
-    </div>
-    <div id="two">
-        <h1>@{{shared.user.name}}</h1>
+    <div id="root">
+        {{-- <input type="text" v-model="cuppon"> --}}
+        {{-- <input type="text" :value="cuppon" @input="cuppon=$event.target.value"> --}}
+        <cuppon v-model="cuppon">
     </div>
     <script src="{{asset('js/app.js')}}"></script>
 </body>
