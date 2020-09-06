@@ -9,7 +9,7 @@
                 >
                     <div class="message-header">
                         <p>{{ status.user.name }} said...</p>
-                        <p>{{ postedOn(status) }}</p>
+                        <p>{{ status.created_at | age | capitalize }}...</p>
                     </div>
                     <div class="message-body" v-text="status.body">
                         This is Home Page.
@@ -23,18 +23,24 @@
 <script>
 import Status from "../models/Status";
 export default {
+    created() {
+        Status.all(statuses => (this.statuses = statuses));
+    },
     data() {
         return {
             statuses: []
         };
     },
-    created() {
-        Status.all(statuses => (this.statuses = statuses));
+    filters: {
+        age(date) {
+            return moment(date).fromNow();
+        },
+        capitalize(value) {
+            return value.toUpperCase();
+        }
     },
     methods: {
-        postedOn(status) {
-            return moment(status.created_at).fromNow();
-        }
+        postedOn(status) {}
     }
 };
 </script>

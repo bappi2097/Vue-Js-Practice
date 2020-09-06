@@ -1989,11 +1989,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      statuses: []
-    };
-  },
   created: function created() {
     var _this = this;
 
@@ -2001,10 +1996,21 @@ __webpack_require__.r(__webpack_exports__);
       return _this.statuses = statuses;
     });
   },
-  methods: {
-    postedOn: function postedOn(status) {
-      return moment(status.created_at).fromNow();
+  data: function data() {
+    return {
+      statuses: []
+    };
+  },
+  filters: {
+    age: function age(date) {
+      return moment(date).fromNow();
+    },
+    capitalize: function capitalize(value) {
+      return value.toUpperCase();
     }
+  },
+  methods: {
+    postedOn: function postedOn(status) {}
   }
 });
 
@@ -23790,7 +23796,13 @@ var render = function() {
               _c("div", { staticClass: "message-header" }, [
                 _c("p", [_vm._v(_vm._s(status.user.name) + " said...")]),
                 _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(_vm.postedOn(status)))])
+                _c("p", [
+                  _vm._v(
+                    _vm._s(
+                      _vm._f("capitalize")(_vm._f("age")(status.created_at))
+                    ) + "..."
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c(
