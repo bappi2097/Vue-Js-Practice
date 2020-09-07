@@ -14,7 +14,7 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        return Status::with('user')->latest()->get();
     }
 
     /**
@@ -35,7 +35,7 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

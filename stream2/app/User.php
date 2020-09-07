@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The method should create relation
+     *
+     * @var none
+     */
+
+    public function statuses()
+    {
+        return $this->hasMany("App\Statuses");
+    }
 }

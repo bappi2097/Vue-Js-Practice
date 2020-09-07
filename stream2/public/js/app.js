@@ -1950,6 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _model_Status__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../model/Status */ "./resources/js/model/Status.js");
 //
 //
 //
@@ -1971,7 +1972,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    var _this = this;
+
+    _model_Status__WEBPACK_IMPORTED_MODULE_0__["default"].all(function (statuses) {
+      return _this.statuses = statuses;
+    });
+  },
+  data: function data() {
+    return {
+      statuses: []
+    };
+  },
+  filters: {
+    age: function age(date) {
+      return moment(date).fromNow();
+    },
+    capitalize: function capitalize(value) {
+      return value.toUpperCase();
+    }
+  },
+  methods: {
+    postedOn: function postedOn(status) {}
+  }
+});
 
 /***/ }),
 
@@ -23728,40 +23757,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column" }, [
-          _c(
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "columns" }, [
+      _c(
+        "div",
+        { staticClass: "column" },
+        _vm._l(_vm.statuses, function(status) {
+          return _c(
             "div",
             { staticClass: "message", staticStyle: { "margin-top": "20px" } },
             [
               _c("div", { staticClass: "message-header" }, [
-                _c("p", [_vm._v("John Doe Said...")]),
+                _c("p", [_vm._v(_vm._s(status.user.name) + " Said...")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("A momment ago...")])
+                _c("p", [
+                  _vm._v(
+                    _vm._s(
+                      _vm._f("capitalize")(_vm._f("age")(status.created_at))
+                    ) + "..."
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "message-body" }, [
                 _c("p", [
                   _vm._v(
-                    "\n                        Lorem ipsum dolor sit amet, consectetur adipisicing\n                        elit. Voluptate, itaque!\n                    "
+                    "\n                        " +
+                      _vm._s(status.body) +
+                      "\n                    "
                   )
                 ])
               ])
             ]
           )
-        ])
-      ])
+        }),
+        0
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39041,6 +39076,43 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 window.axios = axios__WEBPACK_IMPORTED_MODULE_2___default.a;
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 window.moment = moment__WEBPACK_IMPORTED_MODULE_3___default.a;
+
+/***/ }),
+
+/***/ "./resources/js/model/Status.js":
+/*!**************************************!*\
+  !*** ./resources/js/model/Status.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Status = /*#__PURE__*/function () {
+  function Status() {
+    _classCallCheck(this, Status);
+  }
+
+  _createClass(Status, null, [{
+    key: "all",
+    value: function all(then) {
+      return axios.get("/statuses").then(function (_ref) {
+        var data = _ref.data;
+        return then(data);
+      });
+    }
+  }]);
+
+  return Status;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Status);
 
 /***/ }),
 
