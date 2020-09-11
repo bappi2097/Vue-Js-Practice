@@ -7,7 +7,6 @@
 
     <title>Laravel</title>
     <link rel="stylesheet" href="{{asset('css/bulma.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 
 <body>

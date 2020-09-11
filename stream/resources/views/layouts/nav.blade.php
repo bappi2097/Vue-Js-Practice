@@ -1,13 +1,13 @@
-<nav class="tabs is-boxed is-centered">
+<nav class="tabs is-centered is-boxed">
     <div class="container">
         <ul>
             <router-link to="/" tag="li" exact>
                 <a>Home</a>
             </router-link>
-            <router-link to="/about" tag="li">
+            <router-link to="/about" tag="li" exact>
                 <a>About</a>
             </router-link>
-            <router-link to="/contact" tag="li">
+            <router-link to="/contact" tag="li" exact>
                 <a>Contact</a>
             </router-link>
         </ul>

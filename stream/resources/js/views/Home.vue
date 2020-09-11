@@ -2,27 +2,27 @@
     <div class="container">
         <div class="columns">
             <div class="column">
-                <div
-                    class="message"
-                    v-for="status in statuses"
-                    style="margin-top:20px;"
-                >
+                <div class="message" v-for="status in statuses">
                     <div class="message-header">
                         <p>{{ status.user.name }} said...</p>
-                        <p>{{ status.created_at | age | capitalize }}...</p>
+                        <p>{{ status.created_at | ago }}</p>
                     </div>
-                    <div class="message-body" v-text="status.body">
-                        This is Home Page.
+                    <div class="message-body">
+                        <p>
+                            {{ status.body }}
+                        </p>
                     </div>
                 </div>
+                <add-to-stream @completed="addStatus"></add-to-stream>
             </div>
         </div>
     </div>
 </template>
-
 <script>
 import Status from "../models/Status";
+import AddToStream from "../components/AddToStream";
 export default {
+    components: { AddToStream },
     created() {
         Status.all(statuses => (this.statuses = statuses));
     },
@@ -32,7 +32,7 @@ export default {
         };
     },
     filters: {
-        age(date) {
+        ago(date) {
             return moment(date).fromNow();
         },
         capitalize(value) {
@@ -40,9 +40,16 @@ export default {
         }
     },
     methods: {
-        postedOn(status) {}
+        addStatus(status) {
+            this.statuses.unshift(status);
+            alert("Your Status has been added to stream");
+            window.scrollTo(0, 0);
+        }
     }
 };
 </script>
-
-<style lang="scss"></style>
+<style>
+.message {
+    margin-top: 20px;
+}
+</style>

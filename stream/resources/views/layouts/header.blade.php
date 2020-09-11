@@ -5,8 +5,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item">
-                        {{-- <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo"> --}}
-                        <h1 class="title is-3">Stream</h1>
+                        <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
                     </a>
                     <span class="navbar-burger burger" data-target="navbarMenuHeroA">
                         <span></span>

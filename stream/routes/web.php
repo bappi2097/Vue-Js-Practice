@@ -17,6 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/statuses', function () {
-    return App\Status::with('user')->latest()->get();
-});
+Route::get('/statuses', 'StatusController@index')->name('index');
+Route::post('/statuses', 'StatusController@store')->name('store');

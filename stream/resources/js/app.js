@@ -1,6 +1,6 @@
 require("./bootstrap");
 import router from "./routes.js";
-new Vue({
+var root = new Vue({
     el: "#root",
     router
 });
