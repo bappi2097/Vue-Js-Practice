@@ -55,6 +55,7 @@ class Errors {
     get(field) {
         if (this.errors[field]) {
             return this.errors[field][0];
+            //
         }
     }
     clear(field) {

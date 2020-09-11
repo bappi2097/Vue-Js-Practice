@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/statuses', 'StatusController@index')->name('index');
+Route::post('/statuses', 'StatusController@store')->name('store');
