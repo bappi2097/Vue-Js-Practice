@@ -27,7 +27,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "vue": "^2.6.12",
     "vue-router": "^3.4.3"
   },
